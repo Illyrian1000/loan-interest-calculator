@@ -1,0 +1,22 @@
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-top: 20px;
+  color: #dde6ed;
+}
+
+.inputGroup > input {
+  margin-top: 5px;
+  width: 200px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin-top: 10px;
+}
