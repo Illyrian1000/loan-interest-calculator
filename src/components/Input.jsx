@@ -16,11 +16,8 @@ export default function Input(props) {
       // setAmount(formattedNumber.format(e.target.valueAsNumber));
 
       console.log(e.target.valueAsNumber);
-    } else if (
-      e.target.valueAsNumber < 20000 ||
-      e.target.valueAsNumber === NaN
-    ) {
-      setAmount(20000);
+    } else if (e.target.valueAsNumber < 0 || e.target.valueAsNumber === NaN) {
+      setAmount(0);
       console.log(e.target.valueAsNumber);
     } else {
       setAmount(200000);
@@ -63,7 +60,7 @@ export default function Input(props) {
           type="number"
           step={1000}
           id="totalSum"
-          min={20000}
+          min={0}
           max={200000}
           onChange={changeAmountHandler}
           value={amount}
