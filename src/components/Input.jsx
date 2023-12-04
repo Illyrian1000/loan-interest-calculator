@@ -1,14 +1,31 @@
 import { useState } from "react";
 
 import "./Input.css";
-export default function Input() {
+export default function Input(props) {
   const [amount, setAmount] = useState(50000);
   const [period, setPeriod] = useState(10);
   const [interest, setInterest] = useState(4);
 
   function changeAmountHandler(e) {
     e.preventDefault();
-    setAmount(e.target.valueAsNumber);
+
+    if (e.target.valueAsNumber <= 200000 && e.target.valueAsNumber >= 20000) {
+      setAmount(e.target.valueAsNumber);
+
+      //CHANGES THE WHOLE FORMAT OF THE NUMBER AND RUINS THE IF ELSE LOGIC
+      // setAmount(formattedNumber.format(e.target.valueAsNumber));
+
+      console.log(e.target.valueAsNumber);
+    } else if (
+      e.target.valueAsNumber < 20000 ||
+      e.target.valueAsNumber === NaN
+    ) {
+      setAmount(20000);
+      console.log(e.target.valueAsNumber);
+    } else {
+      setAmount(200000);
+      console.log(e.target.valueAsNumber);
+    }
   }
 
   function changePeriodHandler(e) {
@@ -23,33 +40,35 @@ export default function Input() {
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log(amount, period, interest);
-
-    let monthlyPeriod = period * 12;
-    let monthlyInterest = Number(interest) / 100 / 12;
-
-    //TO FIX: SHOW IT AS A NUMBER AND NOT AS A STRING
-    monthlyInterest = Number(monthlyInterest);
-
-    console.log(monthlyPeriod, monthlyInterest);
-
-    // m = T * ( (mi * () ))
-
-    let monthlyCost;
-
-    let firstPart = monthlyInterest * (1 + monthlyInterest) ** monthlyPeriod;
-    // console.log(firstPart);
-    let secondPart = (1 + monthlyInterest) ** monthlyPeriod - 1;
-    // console.log(secondPart);
-
-    monthlyCost = amount * (firstPart / secondPart);
-    console.log(monthlyCost);
+    if (amount && period && interest !== 0) {
+      let dataObj = {
+        passAmount: amount,
+        passPeriod: period,
+        passInterest: Number(interest),
+      };
+      return props.outputData(dataObj);
+    } else {
+      console.log("insert all data");
+    }
   }
 
   return (
     <form action="">
       <div className="inputGroup">
-        <label htmlFor="totalSum">Shuma Totale: {amount}</label>
+        <label htmlFor="totalSum">
+          {" "}
+          <span className="label-text">Shuma Totale ne Euro:</span> {amount} €
+        </label>
+        <input
+          type="number"
+          step={1000}
+          id="totalSum"
+          min={20000}
+          max={200000}
+          onChange={changeAmountHandler}
+          value={amount}
+        />
+
         <input
           type="range"
           step={1000}
@@ -61,7 +80,9 @@ export default function Input() {
         />
       </div>
       <div className="inputGroup">
-        <label htmlFor="duration">Periudha ne vite: {period}</label>
+        <label htmlFor="duration">
+          <span className="label-text">Periudha ne vite:</span> {period}
+        </label>
         <input
           type="range"
           step={1}
@@ -73,7 +94,9 @@ export default function Input() {
         />
       </div>
       <div className="inputGroup">
-        <label htmlFor="interest">Interesi %</label>
+        <label htmlFor="interest">
+          <span className="label-text">Interesi %</span>
+        </label>
         <input
           type="number"
           id="interest"
@@ -84,7 +107,7 @@ export default function Input() {
         />
       </div>
 
-      <button onClick={submitHandler}>Submit</button>
+      <button onClick={submitHandler}>Llogarit</button>
     </form>
   );
 }
