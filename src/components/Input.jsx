@@ -9,20 +9,18 @@ export default function Input(props) {
   function changeAmountHandler(e) {
     e.preventDefault();
 
-    if (e.target.valueAsNumber <= 200000 && e.target.valueAsNumber >= 20000) {
+    if (e.target.valueAsNumber <= 200000 && e.target.valueAsNumber >= 0) {
       setAmount(e.target.valueAsNumber);
-
-      //CHANGES THE WHOLE FORMAT OF THE NUMBER AND RUINS THE IF ELSE LOGIC
-      // setAmount(formattedNumber.format(e.target.valueAsNumber));
-
-      console.log(e.target.valueAsNumber);
-    } else if (e.target.valueAsNumber < 0 || e.target.valueAsNumber === NaN) {
+    } else if (e.target.valueAsNumber < 0) {
       setAmount(0);
-      console.log(e.target.valueAsNumber);
-    } else {
+    } else if (e.target.valueAsNumber > 200000) {
       setAmount(200000);
       console.log(e.target.valueAsNumber);
+    } else {
+      setAmount(e.target.valueAsNumber);
     }
+
+    // setAmount(e.target.valueAsNumber);
   }
 
   function changePeriodHandler(e) {
@@ -70,7 +68,7 @@ export default function Input(props) {
           type="range"
           step={1000}
           id="totalSum"
-          min={20000}
+          min={0}
           max={200000}
           onChange={changeAmountHandler}
           value={amount}
