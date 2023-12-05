@@ -13,7 +13,8 @@ ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  justify-content: space-around;
+  height: 100%;
 }
 
 li > h2 {
@@ -29,4 +30,10 @@ li > h3 {
 }
 .monthly_payment_text {
   font-size: 1.7rem;
+}
+
+@media screen and (min-width: 601px) {
+  .list-container {
+    width: 30vw;
+  }
 }

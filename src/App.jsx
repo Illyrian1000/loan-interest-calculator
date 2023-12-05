@@ -31,12 +31,14 @@ function App() {
     });
   }
   return (
-    <>
-      <Header></Header>
+    <div className="main_container">
+      <div>
+        <Header></Header>
+        <Input outputData={handleData}></Input>
+      </div>
 
-      <Input outputData={handleData}></Input>
       <Results passData={passObj} />
-    </>
+    </div>
   );
 }
 

@@ -1,10 +1,17 @@
 import { useState } from "react";
 
 import "./Input.css";
+
 export default function Input(props) {
   const [amount, setAmount] = useState(50000);
   const [period, setPeriod] = useState(10);
   const [interest, setInterest] = useState(4);
+
+  let dataObj = {
+    passAmount: amount,
+    passPeriod: period,
+    passInterest: Number(interest),
+  };
 
   function changeAmountHandler(e) {
     e.preventDefault();
@@ -36,7 +43,7 @@ export default function Input(props) {
   function submitHandler(e) {
     e.preventDefault();
     if (amount && period && interest !== 0) {
-      let dataObj = {
+      dataObj = {
         passAmount: amount,
         passPeriod: period,
         passInterest: Number(interest),
