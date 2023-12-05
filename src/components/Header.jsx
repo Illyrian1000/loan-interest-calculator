@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div className="header-div">
       <h1>Llogaritesi Kredise</h1>
-      <h4>Llogarit interesin dhe shumen mujore te kredise hipotekore</h4>
+      <p>Llogarit interesin dhe shumen mujore te kredise hipotekore</p>
     </div>
   );
 }

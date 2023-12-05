@@ -5,12 +5,11 @@ import Input from "./components/Input";
 import Results from "./components/Results";
 
 function App() {
-  const [status, setStatus] = useState(false);
+  // const [status, setStatus] = useState(false);
 
   const [passObj, setPassObj] = useState({});
 
   function handleData(dataReceived) {
-    setStatus(true);
     let monthlyInterest = dataReceived.passInterest / 100;
     monthlyInterest = monthlyInterest / 12;
     let period = dataReceived.passPeriod * 12;
@@ -34,8 +33,9 @@ function App() {
   return (
     <>
       <Header></Header>
+
       <Input outputData={handleData}></Input>
-      {status ? <Results passData={passObj} /> : null}
+      <Results passData={passObj} />
     </>
   );
 }

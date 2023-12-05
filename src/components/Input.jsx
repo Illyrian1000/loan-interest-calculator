@@ -50,10 +50,7 @@ export default function Input(props) {
   return (
     <form action="">
       <div className="inputGroup">
-        <label htmlFor="totalSum">
-          {" "}
-          <span className="label-text">Shuma Totale ne Euro:</span> {amount} €
-        </label>
+        <label htmlFor="totalSum">Shuma Totale ne Euro €</label>
         <input
           type="number"
           step={1000}
@@ -63,23 +60,11 @@ export default function Input(props) {
           onChange={changeAmountHandler}
           value={amount}
         />
-
-        <input
-          type="range"
-          step={1000}
-          id="totalSum"
-          min={0}
-          max={200000}
-          onChange={changeAmountHandler}
-          value={amount}
-        />
       </div>
       <div className="inputGroup">
-        <label htmlFor="duration">
-          <span className="label-text">Periudha ne vite:</span> {period}
-        </label>
+        <label htmlFor="duration">Periudha ne vite</label>
         <input
-          type="range"
+          type="number"
           step={1}
           id="duration"
           min={5}
@@ -89,9 +74,7 @@ export default function Input(props) {
         />
       </div>
       <div className="inputGroup">
-        <label htmlFor="interest">
-          <span className="label-text">Interesi %</span>
-        </label>
+        <label htmlFor="interest">Interesi %</label>
         <input
           type="number"
           id="interest"
