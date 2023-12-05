@@ -1,7 +1,11 @@
 import "./Results.css";
 
 export default function Results({ passData }) {
-  let total = passData.myPeriod * passData.mySolution - passData.initialSum;
+  let total;
+
+  if (passData.myPeriod) {
+    total = passData.myPeriod * passData.mySolution - passData.initialSum;
+  }
 
   const formattedNumber = new Intl.NumberFormat("de-DE", {
     style: "currency",
@@ -23,6 +27,14 @@ export default function Results({ passData }) {
         <li>
           <h2>Interesi</h2>
           <h3>{total && formattedNumber.format(total)}</h3>
+        </li>
+
+        <li>
+          <h2>Shuma ne total</h2>
+          <h3>
+            {passData.initialSum &&
+              formattedNumber.format(total + passData.initialSum)}
+          </h3>
         </li>
       </ul>
     </div>
