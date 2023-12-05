@@ -36,7 +36,7 @@ export default function Input(props) {
 
   function submitHandler(e) {
     e.preventDefault();
-    if (amount !== 0 && period !== 0 && interest !== 0) {
+    if (amount !== 0 && period !== 0 && Number(interest) !== 0) {
       let dataObj = {
         passAmount: amount,
         passPeriod: period,
