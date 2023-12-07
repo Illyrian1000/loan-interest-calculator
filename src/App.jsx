@@ -21,8 +21,6 @@ function App() {
     bottomX = bottomX - 1;
 
     let solution = dataReceived.passAmount * (topX / bottomX);
-    console.log(solution);
-    console.log(monthlyInterest);
 
     setPassObj({
       myPeriod: period,
@@ -32,7 +30,7 @@ function App() {
   }
   return (
     <div className="main_container">
-      <div>
+      <div className="input_group">
         <Header></Header>
         <Input outputData={handleData}></Input>
       </div>

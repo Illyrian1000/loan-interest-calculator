@@ -35,7 +35,6 @@ button {
 
 @media screen and (min-width: 601px) {
   form {
-    width: 30vw;
-    margin: auto;
+    width: 100%;
   }
 }

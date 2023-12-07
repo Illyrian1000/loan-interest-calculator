@@ -35,6 +35,8 @@ li > h3 {
 
 @media screen and (min-width: 601px) {
   .list-container {
-    width: 30vw;
+    width: 100%;
+
+    border-radius: 0 0 15px 15px;
   }
 }
