@@ -10,13 +10,12 @@ export default function Input(props) {
   function changeAmountHandler(e) {
     e.preventDefault();
 
-    if (e.target.valueAsNumber <= 200000 && e.target.valueAsNumber >= 0) {
+    if (e.target.valueAsNumber <= 300000 && e.target.valueAsNumber >= 0) {
       setAmount(e.target.valueAsNumber);
     } else if (e.target.valueAsNumber < 0) {
       setAmount(0);
-    } else if (e.target.valueAsNumber > 200000) {
-      setAmount(200000);
-      console.log(e.target.valueAsNumber);
+    } else if (e.target.valueAsNumber > 300000) {
+      setAmount(300000);
     } else {
       setAmount(e.target.valueAsNumber);
     }
@@ -26,7 +25,16 @@ export default function Input(props) {
 
   function changePeriodHandler(e) {
     e.preventDefault();
-    setPeriod(e.target.valueAsNumber);
+    if (e.target.valueAsNumber > 25) {
+      setPeriod(25);
+    } else if (
+      e.target.valueAsNumber === 0 ||
+      e.target.valueAsNumber === false
+    ) {
+      setPeriod(1);
+    } else {
+      setPeriod(e.target.valueAsNumber);
+    }
   }
 
   function changeInterestHandler(e) {
@@ -52,23 +60,27 @@ export default function Input(props) {
     <form action="">
       <div className="inputGroup">
         <label htmlFor="totalSum">Shuma Totale ne Euro €</label>
+        <p className="additional_info">
+          Shuma totale e kredise, deri ne 300,000 €
+        </p>
         <input
           type="number"
           step={1000}
           id="totalSum"
           min={0}
-          max={200000}
+          max={300000}
           onChange={changeAmountHandler}
           value={amount}
         />
       </div>
       <div className="inputGroup">
         <label htmlFor="duration">Periudha ne vite</label>
+        <p className="additional_info">Max 25 vite</p>
         <input
           type="number"
           step={1}
           id="duration"
-          min={5}
+          min={1}
           max={25}
           onChange={changePeriodHandler}
           value={period}
@@ -76,6 +88,9 @@ export default function Input(props) {
       </div>
       <div className="inputGroup">
         <label htmlFor="interest">Interesi %</label>
+        <p className="additional_info">
+          % e interesit ofruar nga banka + 4% EURIBOR
+        </p>
         <input
           type="number"
           id="interest"

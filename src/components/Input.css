@@ -33,6 +33,14 @@ button {
   font-size: 1.1rem;
 }
 
+.additional_info {
+  color: #9db2bf;
+  font-size: 0.8rem;
+  padding-left: 5px;
+  margin-top: -7px;
+  font-style: italic;
+}
+
 @media screen and (min-width: 601px) {
   form {
     width: 100%;
