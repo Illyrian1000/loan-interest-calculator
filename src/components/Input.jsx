@@ -89,7 +89,7 @@ export default function Input(props) {
       <div className="inputGroup">
         <label htmlFor="interest">Interesi %</label>
         <p className="additional_info">
-          % e interesit ofruar nga banka + 4% EURIBOR
+          % e interesit ofruar nga banka + {props.euribor}% EURIBOR
         </p>
         <input
           type="number"
